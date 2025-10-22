@@ -5,7 +5,7 @@ defmodule Bidding.Inventory.Item do
   schema "items" do
     field :size, :string
     field :sku, :string
-    field :product, :id
+    belongs_to :product, Bidding.Inventory.Product
 
     timestamps(type: :utc_datetime)
   end
@@ -13,7 +13,7 @@ defmodule Bidding.Inventory.Item do
   @doc false
   def changeset(item, attrs) do
     item
-    |> cast(attrs, [:size, :sku])
-    |> validate_required([:size, :sku])
+    |> cast(attrs, [:size, :sku, :product_id])
+    |> validate_required([:size, :sku, :product_id])
   end
 end
