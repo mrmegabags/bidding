@@ -18,6 +18,7 @@ defmodule BiddingWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+    live "/drops", ProductPageLive
   end
 
   # Other scopes may use custom stacks.
